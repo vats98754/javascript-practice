@@ -38,5 +38,6 @@ At this point, you might be wondering how we can resolve these errors.
     needing to step through your functions. There are also other useful methods such as console.table(), console.trace(), 
     and more! You can find additional methods here.
 
-P.S. Warning can be ignored but it is best to address them for the long run.
+P.S. Warnings can be ignored but it is best to address them for the long run. Errors, however, must be addressed for 
+    functional code.
 */
