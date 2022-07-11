@@ -1,3 +1,4 @@
+// Information on DOM Manipulation:
 const container = document.querySelector('#container'); // selects the #container div
 console.dir(container.firstElementChild); // selects the first child of #container => .display
 const controls = document.querySelector('.controls'); // selects the .controls div
