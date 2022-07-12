@@ -6,3 +6,8 @@ function playSound(e) {
     audio.currentTime = 0; // reset the audio to the start
     audio.play();
 };
+
+function removeTransition(e) {
+    if (e.propertyName !== 'transform') return;
+    this.classList.remove('playing');
+}
