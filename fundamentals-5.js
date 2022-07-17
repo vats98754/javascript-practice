@@ -151,3 +151,47 @@ console.log(multiplyNumeric(menu));
 //     height: 600,
 //     title: "My menu"
 // };
+
+const person = {
+    name: ['Bob', 'Smith'],
+    age: 32,
+    bio: function() {
+        console.log(`${this.name[0]} ${this.name[1]} is ${this.age} years old.`);
+    },
+    introduceSelf: function() {
+        console.log(`Hi! I'm ${this.name[0]}.`); // 'this' refers to the immediate parent object
+        // 'this' is very commonly used in constructors to allow customization in creating many different objects
+    }
+};
+person.bio() // 'person' acts as a namespace here
+
+// Function below creates an object called person, which is more long-winded than using a constructor
+function createPerson(name) {
+    const obj = {};
+    obj.name = name;
+    obj.introduceSelf = function() {
+      console.log(`Hi! I'm ${this.name}.`);
+    }
+    return obj;
+}
+
+// Below is an example of a constructor
+function Person(name) { // By convention, constructors are named after the object they create (Capitalized)
+    this.name = name;
+    this.introduceSelf = function() {
+      console.log(`Hi! I'm ${this.name}.`);
+    }
+}
+
+// To call Person() as a constructor, we use the 'new' keyword:
+const salva = new Person('Salva');
+console.log(salva.name);
+salva.introduceSelf();
+
+const frankie = new Person('Frankie');
+console.log(frankie.name);
+frankie.introduceSelf();
+
+// When accessing the DOM, as in 'document.querySelector('div)', a Document object gets created once webpage loads
+// Built-in objects and APIs don't always create object instances automatically
+const myNotification = new Notification('Hello!');
