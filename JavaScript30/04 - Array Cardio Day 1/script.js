@@ -23,26 +23,60 @@ const people = [
 
 // Array.prototype.filter()
 // 1. Filter the list of inventors for those who were born in the 1500's
+const bornIn1500s = inventors.filter((obj) => {
+    return (Math.floor(obj.year/100) === 15);
+});
+console.table(bornIn1500s);
 
 // Array.prototype.map()
 // 2. Give us an array of the inventors first and last names
+const fullNames = inventors.map(obj => `${obj.first} ${obj.last}`);
+console.log(fullNames);
 
 // Array.prototype.sort()
 // 3. Sort the inventors by birthdate, oldest to youngest
+const orderedByBirthAsc = inventors.sort((a, b) => a.year > b.year ? 1 : -1); // sorts in ascending order of 'year'
+// In the above, if returns 1, sort a AFTER b. if 0, a and b stay. if -1, sort a BEFORE b.
+console.table(orderedByBirthAsc);
 
 // Array.prototype.reduce()
 // 4. How many years did all the inventors live all together?
+const sumYears = inventors.reduce((total, inventor) => {
+    return total + (inventor.passed - inventor.year);
+}, 0);
+console.log(sumYears);
 
-// 5. Sort the inventors by years lived
+// 5. Sort the inventors by years lived, descendingly
+const orderedByAgeDesc = inventors.sort((a, b) => (a.passed - a.year > b.passed - b.year) ? -1 : 1);
+console.table(orderedByAgeDesc);
 
 // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
 // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
 
+// const categoryDiv = document.querySelector('.mw-category');
+// const links = Array.from(categoryDiv.querySelectorAll('a'));
+// const de = links
+//             .map(link => link.textContent)
+//             .filter(linkText => linkText.includes('de'));
+// console.log(de);
 
 // 7. sort Exercise
 // Sort the people alphabetically by last name
+const orderedByLastNameAsc = people.sort((a, b) => {
+    const aLastName = a.split(', ')[0];
+    const bLastName = b.split(', ')[0];
+    return aLastName > bLastName ? 1 : -1;
+});
+console.table(orderedByLastNameAsc);
 
 // 8. Reduce Exercise
 // Sum up the instances of each of these
-
 const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
+const counterArr = data.reduce((obj, item) => {
+    if (!(item in obj)) {
+        obj[item] = 0;
+    }
+    ++obj[item];
+    return obj;
+}, {});
+console.log(counterArr);
